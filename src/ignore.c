@@ -65,9 +65,9 @@ void add_ignore_pattern(ignores *ig, const char* pattern) {
     int i;
     int pattern_len;
 
-    /* Skip leading / — which, in .gitignore, doesn't mean filesystem root. */
     if ('/' == pattern[0]) {
-        pattern += 1;
+        log_debug("Pattern begins with '/', skipping.");
+        return;
     }
 
     /* Strip off the leading ./ so that matches are more likely. */
